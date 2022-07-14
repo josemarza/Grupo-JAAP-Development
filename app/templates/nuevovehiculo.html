@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuevo Vehiculo - Grupo JAAP</title>
+</head>
+<body>
+    
+<FORM ACTION="http://miserver.midominio.mipais/cgi-bin/test2-cgi" METHOD=POST>
+
+    <CENTER>
+    <TABLE BORDER>
+    
+    <TR>
+       <TD>Chasis:</TD>
+       <TD> <INPUT TYPE="text" NAME="vehic_chasis" SIZE=48 MAXLENGTH=48>     
+    <TR>
+       <TD>Marca:</TD>
+       <TD> <INPUT TYPE="text" NAME="vehic_chasis" SIZE=48 MAXLENGTH=48></TD>
+    
+    <TR>
+       <TD>Modelo:</TD>
+       <TD> <INPUT TYPE="text" NAME="vehic_modelo" SIZE=48 MAXLENGTH=48></TD>
+    
+    <TR>
+      <TD>Año:</TD>
+      <TD> <INPUT TYPE="text" NAME="vehic_anho" SIZE=5 MAXLENGTH=5>Tipo:
+           <INPUT TYPE="text" NAME="vehic_tipo" SIZE=36 MAXLENGTH=36></TD>
+    
+    <TR>
+       <TD>Color: </TD>
+       <TD> <INPUT TYPE="text" NAME="vehic_color" SIZE=20 MAXLENGTH=20>                Combustible: 
+             <INPUT TYPE="text" NAME="vehic_combustible" SIZE=19 MAXLENGTH=19></TD>
+    
+    <TR>
+        <TD>Kilometraje: </TD>
+        <TD> <INPUT TYPE="text" NAME="vehic_kilometraje" SIZE=20 MAXLENGTH=20>
+
+    <TR>
+       <TD>Estado:</TD>
+       <TD> <SELECT NAME="vehic_estado">
+                <OPTION>VENDIDO
+                <OPTION>STOCK
+                <OPTION>CONSIGNADO
+    
+            </SELECT>Escoja una opción</TD>
+        <TR>
+       <TD><B>Pulse aquí:</B></TD>
+       <TD ALIGN=CENTER>
+           <INPUT TYPE="submit" VALUE="Enviar datos ">
+           <INPUT TYPE="reset" VALUE="Borrar los datos"></TD>
+    
+    </TABLE>
+    </CENTER>
+    </FORM>
+</body>
+</html>
