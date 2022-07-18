@@ -4,20 +4,20 @@ from flask_sqlalchemy import SQLAlchemy
 bp = Blueprint('model', __name__)
 db = SQLAlchemy()
 
-# Creamos la tabla de vendedor 01
-class Vendedor01(db.Model):
-    __tablename__ = 'vendedor_01'
-    vend1_id = db.Column(db.Integer, primary_key=True)
-    vend1_ci = db.Column(db.String(10), nullable=False)
-    vend1_nombre_apellido = db.Column(db.String(80), nullable=False)
-    vend1_direccion = db.Column(db.String(120), nullable=False)
-    vend1_telefono = db.Column(db.String(15), nullable=False)
-    vend1_email = db.Column(db.String(50))
+# Creamos la tabla de vendedor
+class Vendedor(db.Model):
+    __tablename__ = 'vendedor'
+    vend_id = db.Column(db.Integer, primary_key=True)
+    vend_ci = db.Column(db.String(10), nullable=False)
+    vend_nombre_apellido = db.Column(db.String(80), nullable=False)
+    vend_direccion = db.Column(db.String(120), nullable=False)
+    vend_telefono = db.Column(db.String(15), nullable=False)
+    vend_email = db.Column(db.String(50))
     
     @classmethod
-    def create(cls, vend1_ci, vend1_nombre_apellido, vend1_direccion, vend1_telefono, vend1_email):
-        vendedor1 = Vendedor01(vend1_ci=vend1_ci, vend1_nombre_apellido=vend1_nombre_apellido, vend1_direccion=vend1_direccion, vend1_telefono=vend1_telefono, vend1_email=vend1_email)
-        return vendedor1.save()
+    def create(cls, vend_ci, vend_nombre_apellido, vend_direccion, vend_telefono, vend_email):
+        vendedor = Vendedor(vend_ci=vend_ci, vend_nombre_apellido=vend_nombre_apellido, vend_direccion=vend_direccion, vend_telefono=vend_telefono, vend_email=vend_email)
+        return vendedor.save()
     
     def save(self):
         try:
@@ -40,27 +40,26 @@ class Vendedor01(db.Model):
     def json(self):
         return {
             'id': self.id,
-            "vend1_ci" : self.vend1_ci, 
-            "vend1_nombre_apellido" : self.vend1_nombre_apellido, 
-            "vend1_direccion" : self.vend1_direccion, 
-            "vend1_telefono" : self.vend1_telefono, 
-            "vend1_email" : self.vend1_email
+            "vend_ci" : self.vend_ci, 
+            "vend_nombre_apellido" : self.vend_nombre_apellido, 
+            "vend_direccion" : self.vend_direccion, 
+            "vend_telefono" : self.vend_telefono, 
+            "vend_email" : self.vend_email
                 }
+# Creamos la tabla de cliente titular
+class ClienteTitular(db.Model):
+    __tablename__ = 'cliente_titular'
+    ct_id = db.Column(db.Integer, primary_key=True)
+    ct_ci = db.Column(db.String(10), nullable=False)
+    ct_nombre_apellido = db.Column(db.String(80), nullable=False)
+    ct_direccion = db.Column(db.String(120), nullable=False)
+    ct_telefono = db.Column(db.String(15), nullable=False)
+    ct_email = db.Column(db.String(50))
 
-# Creamos la tabla de vendedor 02
-class Vendedor02(db.Model):
-    __tablename__ = 'vendedor_02'
-    vend2_id = db.Column(db.Integer, primary_key=True)
-    vend2_ci = db.Column(db.String(10), nullable=False)
-    vend2_nombre_apellido = db.Column(db.String(80), nullable=False)
-    vend2_direccion = db.Column(db.String(120), nullable=False)
-    vend2_telefono = db.Column(db.String(15), nullable=False)
-    vend2_email = db.Column(db.String(50))
-  
     @classmethod
-    def create(cls, vend2_ci, vend2_nombre_apellido, vend2_direccion, vend2_telefono, vend2_email):
-        vendedor2 = Vendedor02(vend2_ci=vend2_ci, vend2_nombre_apellido=vend2_nombre_apellido, vend2_direccion=vend2_direccion, vend2_telefono=vend2_telefono, vend2_email=vend2_email)
-        return vendedor2.save()
+    def create(cls, ct_ci, ct_nombre_apellido, ct_direccion, ct_telefono, ct_email):
+        cliente_titular = ClienteTitular(ct_ci=ct_ci, ct_nombre_apellido=ct_nombre_apellido, ct_direccion=ct_direccion, ct_telefono=ct_telefono, ct_email=ct_email)
+        return cliente_titular.save()
     
     def save(self):
         try:
@@ -83,27 +82,26 @@ class Vendedor02(db.Model):
     def json(self):
         return {
             'id': self.id,
-            "vend2_ci" : self.vend2_ci, 
-            "vend2_nombre_apellido" : self.vend2_nombre_apellido, 
-            "vend2_direccion" : self.vend2_direccion, 
-            "vend2_telefono" : self.vend2_telefono, 
-            "vend2_email" : self.vend2_email
+            "ct_ci" : self.ct_ci, 
+            "ct_nombre_apellido" : self.ct_nombre_apellido, 
+            "ct_direccion" : self.ct_direccion, 
+            "ct_telefono" : self.ct_telefono, 
+            "ct_email" : self.ct_email
                 }
 
-# Creamos la tabla de cliente titular 01
-class ClienteTitular01(db.Model):
-    __tablename__ = 'cliente_titular_01'
-    ct1_id = db.Column(db.Integer, primary_key=True)
-    ct1_ci = db.Column(db.String(10), nullable=False)
-    ct1_nombre_apellido = db.Column(db.String(80), nullable=False)
-    ct1_direccion = db.Column(db.String(120), nullable=False)
-    ct1_telefono = db.Column(db.String(15), nullable=False)
-    ct1_email = db.Column(db.String(50))
+class Codeudor(db.Model):
+    __tablename__ = 'codeudor'
+    cd_id = db.Column(db.Integer, primary_key=True)
+    cd_ci = db.Column(db.String(10), nullable=False)
+    cd_nombre_apellido = db.Column(db.String(80), nullable=False)
+    cd_direccion = db.Column(db.String(120), nullable=False)
+    cd_telefono = db.Column(db.String(15), nullable=False)
+    cd_email = db.Column(db.String(50))
 
     @classmethod
-    def create(cls, ct1_ci, ct1_nombre_apellido, ct1_direccion, ct1_telefono, ct1_email):
-        cliente_titular_01 = ClienteTitular01(ct1_ci=ct1_ci, ct1_nombre_apellido=ct1_nombre_apellido, ct1_direccion=ct1_direccion, ct1_telefono=ct1_telefono, ct1_email=ct1_email)
-        return cliente_titular_01.save()
+    def create(cls, cd_ci, cd_nombre_apellido, cd_direccion, cd_telefono, cd_email):
+        codeudor = Codeudor(cd_ci=cd_ci, cd_nombre_apellido=cd_nombre_apellido, cd_direccion=cd_direccion, cd_telefono=cd_telefono, cd_email=cd_email)
+        return codeudor.save()
     
     def save(self):
         try:
@@ -126,182 +124,12 @@ class ClienteTitular01(db.Model):
     def json(self):
         return {
             'id': self.id,
-            "ct1_ci" : self.ct1_ci, 
-            "ct1_nombre_apellido" : self.ct1_nombre_apellido, 
-            "ct1_direccion" : self.ct1_direccion, 
-            "ct1_telefono" : self.ct1_telefono, 
-            "ct1_email" : self.ct1_email
+            "cd_ci" : self.cd_ci, 
+            "cd_nombre_apellido" : self.cd_nombre_apellido, 
+            "cd_direccion" : self.cd_direccion, 
+            "cd_telefono" : self.cd_telefono, 
+            "cd_email" : self.cd_email
                 }
-
-class ClienteTitular02(db.Model):
-    __tablename__ = 'cliente_titular_02'
-    ct2_id = db.Column(db.Integer, primary_key=True)
-    ct2_ci = db.Column(db.String(10), nullable=False)
-    ct2_nombre_apellido = db.Column(db.String(80), nullable=False)
-    ct2_direccion = db.Column(db.String(120), nullable=False)
-    ct2_telefono = db.Column(db.String(15), nullable=False)
-    ct2_email = db.Column(db.String(50))
-
-    @classmethod
-    def create(cls, ct2_ci, ct2_nombre_apellido, ct2_direccion, ct2_telefono, ct2_email):
-        cliente_titular_02 = ClienteTitular02(ct2_ci=ct2_ci, ct2_nombre_apellido=ct2_nombre_apellido, ct2_direccion=ct2_direccion, ct2_telefono=ct2_telefono, ct2_email=ct2_email)
-        return cliente_titular_02.save()
-    
-    def save(self):
-        try:
-            db.session.add(self) #Añadi  
-            db.session.commit() #Guarda
-            return self
-        except Exception as e:
-            print(e)
-            return None
-    
-    def delete(self):
-        try:    
-            db.session.delete(self)
-            db.session.commit()
-            return True
-        except Exception as e:
-            print(e)
-            return False
-    
-    def json(self):
-        return {
-            'id': self.id,
-            "ct2_ci" : self.ct2_ci, 
-            "ct2_nombre_apellido" : self.ct2_nombre_apellido, 
-            "ct2_direccion" : self.ct2_direccion, 
-            "ct2_telefono" : self.ct2_telefono, 
-            "ct2_email" : self.ct2_email
-                }
-
-class Codeudor01(db.Model):
-    __tablename__ = 'codeudor_01'
-    cd1_id = db.Column(db.Integer, primary_key=True)
-    cd1_ci = db.Column(db.String(10), nullable=False)
-    cd1_nombre_apellido = db.Column(db.String(80), nullable=False)
-    cd1_direccion = db.Column(db.String(120), nullable=False)
-    cd1_telefono = db.Column(db.String(15), nullable=False)
-    cd1_email = db.Column(db.String(50))
-
-    @classmethod
-    def create(cls, cd1_ci, cd1_nombre_apellido, cd1_direccion, cd1_telefono, cd1_email):
-        codeudor_01 = Codeudor01(cd1_ci=cd1_ci, cd1_nombre_apellido=cd1_nombre_apellido, cd1_direccion=cd1_direccion, cd1_telefono=cd1_telefono, cd1_email=cd1_email)
-        return codeudor_01.save()
-    
-    def save(self):
-        try:
-            db.session.add(self) #Añadi  
-            db.session.commit() #Guarda
-            return self
-        except Exception as e:
-            print(e)
-            return None
-    
-    def delete(self):
-        try:    
-            db.session.delete(self)
-            db.session.commit()
-            return True
-        except Exception as e:
-            print(e)
-            return False
-    
-    def json(self):
-        return {
-            'id': self.id,
-            "cd1_ci" : self.cd1_ci, 
-            "cd1_nombre_apellido" : self.cd1_nombre_apellido, 
-            "cd1_direccion" : self.cd1_direccion, 
-            "cd1_telefono" : self.cd1_telefono, 
-            "cd1_email" : self.cd1_email
-                }
-
-class Codeudor02(db.Model):
-    __tablename__ = 'codeudor_02'
-    cd2_id = db.Column(db.Integer, primary_key=True)
-    cd2_ci = db.Column(db.String(10), nullable=False)
-    cd2_nombre_apellido = db.Column(db.String(80), nullable=False)
-    cd2_direccion = db.Column(db.String(120), nullable=False)
-    cd2_telefono = db.Column(db.String(15), nullable=False)
-    cd2_email = db.Column(db.String(50))
-
-
-    @classmethod
-    def create(cls, cd2_ci, cd2_nombre_apellido, cd2_direccion, cd2_telefono, cd2_email):
-        codeudor_02 = Codeudor02(cd2_ci=cd2_ci, cd2_nombre_apellido=cd2_nombre_apellido, cd2_direccion=cd2_direccion, cd2_telefono=cd2_telefono, cd2_email=cd2_email)
-        return codeudor_02.save()
-    
-    def save(self):
-        try:
-            db.session.add(self) #Añadi  
-            db.session.commit() #Guarda
-            return self
-        except Exception as e:
-            print(e)
-            return None
-    
-    def delete(self):
-        try:    
-            db.session.delete(self)
-            db.session.commit()
-            return True
-        except Exception as e:
-            print(e)
-            return False
-    
-    def json(self):
-        return {
-            'id': self.id,
-            "cd2_ci" : self.cd2_ci, 
-            "cd2_nombre_apellido" : self.cd2_nombre_apellido, 
-            "cd2_direccion" : self.cd2_direccion, 
-            "cd2_telefono" : self.cd2_telefono, 
-            "cd2_email" : self.cd2_email
-                }
-
-class Codeudor03(db.Model):
-    __tablename__ = 'codeudor_03'
-    cd3_id = db.Column(db.Integer, primary_key=True)
-    cd3_ci = db.Column(db.String(10), nullable=False)
-    cd3_nombre_apellido = db.Column(db.String(80), nullable=False)
-    cd3_direccion = db.Column(db.String(120), nullable=False)
-    cd3_telefono = db.Column(db.String(15), nullable=False)
-    cd3_email = db.Column(db.String(50))
-
-    @classmethod
-    def create(cls, cd3_ci, cd3_nombre_apellido, cd3_direccion, cd3_telefono, cd3_email):
-        codeudor_03 = Codeudor03(cd3_ci=cd3_ci, cd3_nombre_apellido=cd3_nombre_apellido, cd3_direccion=cd3_direccion, cd3_telefono=cd3_telefono, cd3_email=cd3_email)
-        return codeudor_03.save()
-    
-    def save(self):
-        try:
-            db.session.add(self) #Añadi  
-            db.session.commit() #Guarda
-            return self
-        except Exception as e:
-            print(e)
-            return None
-    
-    def delete(self):
-        try:    
-            db.session.delete(self)
-            db.session.commit()
-            return True
-        except Exception as e:
-            print(e)
-            return False
-    
-    def json(self):
-        return {
-            'id': self.id,
-            "cd3_ci" : self.cd3_ci, 
-            "cd3_nombre_apellido" : self.cd3_nombre_apellido, 
-            "cd3_direccion" : self.cd3_direccion, 
-            "cd3_telefono" : self.cd3_telefono, 
-            "cd3_email" : self.cd3_email
-                }
-
 
 class Vehiculo(db.Model):
     __tablename__ = 'vehiculo'
@@ -342,20 +170,25 @@ class Vehiculo(db.Model):
     def json(self):
         return {
             'id': self.id,
-            'vehic_chasis':vehic_chasis, 
-            'vehic_marca':vehic_marca, 
-            'vehic_modelo':vehic_modelo, 
-            'vehic_anho':vehic_anho, 
-            'vehic_tipo':vehic_tipo, 
-            'vehic_color':vehic_color, 
-            'vehic_combustible':vehic_combustible, 
-            'vehic_kilometraje':vehic_kilometraje, 
-            'vehic_estado':vehic_estado           
+            'vehic_chasis':self.vehic_chasis, 
+            'vehic_marca':self.vehic_marca, 
+            'vehic_modelo':self.vehic_modelo, 
+            'vehic_anho':self.vehic_anho, 
+            'vehic_tipo':self.vehic_tipo, 
+            'vehic_color':self.vehic_color, 
+            'vehic_combustible':self.vehic_combustible, 
+            'vehic_kilometraje':self.vehic_kilometraje, 
+            'vehic_estado':self.vehic_estado           
                 }
 
 class PlanDePago(db.Model):
     __tablename__ = 'plan_de_pago'
     plan_pago_id = db.Column(db.Integer, primary_key=True)
+    plan_pago_cliente_01 = db.Column(db.String, db.ForeignKey('cliente_titular.ct_nombre_apellido', ondelete="CASCADE"))
+    plan_pago_cliente_02 = db.Column(db.String, db.ForeignKey('cliente_titular.ct_nombre_apellido', ondelete="CASCADE"))
+    plan_pago_codeudor_01 = db.Column(db.String, db.ForeignKey('codeudor.cd_nombre_apellido', ondelete="CASCADE"))
+    plan_pago_codeudor_02 = db.Column(db.String, db.ForeignKey('codeudor.cd_nombre_apellido', ondelete="CASCADE"))
+    plan_pago_codeudor_03 = db.Column(db.String, db.ForeignKey('codeudor.cd_nombre_apellido', ondelete="CASCADE"))
     plan_pago_entrega = db.Column(db.Integer, nullable=False)
     plan_pago_cant_cuotas = db.Column(db.Integer, nullable=False)
     plan_pago_monto_cuota = db.Column(db.Integer, nullable=False)
@@ -364,8 +197,8 @@ class PlanDePago(db.Model):
     plan_pago_id_vehic = db.Column(db.Integer, db.ForeignKey("vehiculo.vehic_id", ondelete="CASCADE"))
 
     @classmethod
-    def create(cls, plan_pago_entrega, plan_pago_cant_cuotas, plan_pago_monto_cuota, plan_pago_cant_refuerzos, plan_pago_monto_refuerzos, plan_pago_id_vehic):
-        plan_de_pago = PlanDePago(plan_pago_entrega = plan_pago_entrega, plan_pago_cant_cuotas = plan_pago_cant_cuotas, plan_pago_monto_cuota = plan_pago_monto_cuota, plan_pago_cant_refuerzos = plan_pago_cant_refuerzos, plan_pago_monto_refuerzos = plan_pago_monto_refuerzos, plan_pago_id_vehic = plan_pago_id_vehic)
+    def create(cls, plan_pago_cliente_01, plan_pago_cliente_02, plan_pago_codeudor_01, plan_pago_codeudor_02, plan_pago_codeudor_03,  plan_pago_entrega, plan_pago_cant_cuotas, plan_pago_monto_cuota, plan_pago_cant_refuerzos, plan_pago_monto_refuerzos, plan_pago_id_vehic):
+        plan_de_pago = PlanDePago(plan_pago_cliente_01 = plan_pago_cliente_01, plan_pago_cliente_02 = plan_pago_cliente_02, plan_pago_codeudor_01 = plan_pago_codeudor_01, plan_pago_codeudor_02 = plan_pago_codeudor_02, plan_pago_codeudor_03 = plan_pago_codeudor_03, plan_pago_entrega = plan_pago_entrega, plan_pago_cant_cuotas = plan_pago_cant_cuotas, plan_pago_monto_cuota = plan_pago_monto_cuota, plan_pago_cant_refuerzos = plan_pago_cant_refuerzos, plan_pago_monto_refuerzos = plan_pago_monto_refuerzos, plan_pago_id_vehic = plan_pago_id_vehic)
         return plan_de_pago.save()
     
     def save(self):
@@ -389,12 +222,17 @@ class PlanDePago(db.Model):
     def json(self):
         return {
             'id': self.id,
-            'plan_pago_entrega' : plan_pago_entrega, 
-            'plan_pago_cant_cuotas' : plan_pago_cant_cuotas, 
-            'plan_pago_monto_cuota' : plan_pago_monto_cuota, 
-            'plan_pago_cant_refuerzos' : plan_pago_cant_refuerzos, 
-            'plan_pago_monto_refuerzos' : plan_pago_monto_refuerzos, 
-            'plan_pago_id_vehic' : plan_pago_id_vehic                
+            'plan_pago_cliente_01' : self.plan_pago_cliente_01,
+            'plan_pago_cliente_02' : self.plan_pago_cliente_02,
+            'plan_pago_codeudor_01' : self.plan_pago_codeudor_01,
+            'plan_pago_codeudor_02' : self.plan_pago_codeudor_02,
+            'plan_pago_codeudor_03' : self.plan_pago_codeudor_03,
+            'plan_pago_entrega' : self.plan_pago_entrega, 
+            'plan_pago_cant_cuotas' : self.plan_pago_cant_cuotas, 
+            'plan_pago_monto_cuota' : self.plan_pago_monto_cuota, 
+            'plan_pago_cant_refuerzos' : self.plan_pago_cant_refuerzos, 
+            'plan_pago_monto_refuerzos' : self.plan_pago_monto_refuerzos, 
+            'plan_pago_id_vehic' : self.plan_pago_id_vehic                
             }
 
 
