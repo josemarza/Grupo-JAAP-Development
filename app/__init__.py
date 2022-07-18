@@ -1,5 +1,5 @@
 from flask import Flask
-from app.model import db, Vendedor01, Vendedor02, ClienteTitular01, ClienteTitular02, Codeudor01, Codeudor02, Codeudor03, Vehiculo, PlanDePago
+from app.model import db, Vendedor, ClienteTitular, Codeudor, Vehiculo, PlanDePago
 from app.config import config
 
 def create_app(environment):
