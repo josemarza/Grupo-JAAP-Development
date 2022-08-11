@@ -1,12 +1,18 @@
 from flask import Blueprint, render_template, request
 from datetime import datetime
 from app.model import Vehiculo, ClienteTitular, Codeudor
+from flask_sqlalchemy import SQLAlchemy
 
 bp = Blueprint('main', __name__)
 
+# @bp.route('/')
+# def index():
+#     return render_template('index.html')
+
+# Direccionar a la página de opciones
 @bp.route('/')
-def index():
-    return render_template('index.html')
+def opciones():
+    return render_template('opciones.html')
 
 # Direccionar al formulario de vehiculos
 
@@ -56,4 +62,20 @@ def apinuevocodeudor():
     carga_de_nuevo_codeudor = Codeudor.create(
         cd_ci=nuevo_codeudor['cd_ci'], cd_nombre_apellido=nuevo_codeudor['cd_nombre_apellido'], cd_direccion=nuevo_codeudor['cd_direccion'], cd_telefono=nuevo_codeudor['cd_telefono'], cd_email=nuevo_codeudor['cd_email'])
     return render_template("nuevocodeudor.html")
+
+# Direccionar a la página de nueva operación
+@bp.route('/nuevaoperacion')
+def nuevaoperacion():
+    consulta_cliente_titular=ClienteTitular.query.all()
+    extraccion_lista_clientes=[]
+    for elemento in consulta_cliente_titular:
+        extraccion_lista_clientes.append(elemento.ct_nombre_apellido)
+    print(extraccion_lista_clientes)
+    return render_template('nuevaoperacion.html', lista=extraccion_lista_clientes)
+
+
+# Direccionar a la página de consulta
+@bp.route('/consulta')
+def consulta():
+    return render_template('consulta.html')
 
