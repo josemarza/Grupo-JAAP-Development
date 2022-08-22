@@ -71,8 +71,26 @@ def nuevaoperacion():
     for elemento in consulta_cliente_titular:
         extraccion_lista_clientes.append(elemento.ct_nombre_apellido)
     print(extraccion_lista_clientes)
-    return render_template('nuevaoperacion.html', lista=extraccion_lista_clientes)
 
+    consulta_vehiculo=Vehiculo.query.all()
+    extraccion_lista_vehiculos_marca=[]
+    extraccion_lista_vehiculos_modelo=[]
+    extraccion_lista_vehiculos_chasis=[]
+    for elemento in consulta_vehiculo:
+        extraccion_lista_vehiculos_marca.append(elemento.vehic_marca)
+        extraccion_lista_vehiculos_modelo.append(elemento.vehic_modelo)
+        extraccion_lista_vehiculos_chasis.append(elemento.vehic_chasis)
+    print(extraccion_lista_vehiculos_marca)
+    print(extraccion_lista_vehiculos_modelo)
+    print(extraccion_lista_vehiculos_chasis)
+
+    consulta_codeudor=ClienteTitular.query.all()
+    extraccion_lista_clientes=[]
+    for elemento in consulta_cliente_titular:
+        extraccion_lista_clientes.append(elemento.ct_nombre_apellido)
+    print(extraccion_lista_clientes)
+
+    return render_template('nuevaoperacion.html', extraccion_lista_clientes=extraccion_lista_clientes, extraccion_lista_vehiculos_marca=extraccion_lista_vehiculos_marca, extraccion_lista_vehiculos_modelo=extraccion_lista_vehiculos_modelo, extraccion_lista_vehiculos_chasis=extraccion_lista_vehiculos_chasis)
 
 # Direccionar a la página de consulta
 @bp.route('/consulta')

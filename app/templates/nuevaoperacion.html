@@ -10,8 +10,32 @@
     <div>
         <label for="cliente">Cliente</label>
         <select name="cliente" id="">
-            {% for ct_nombre_apellido in lista %}
+            {% for ct_nombre_apellido in extraccion_lista_clientes %}
             <option value="{{ct_nombre_apellido}}">{{ct_nombre_apellido}}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div>
+        <label for="marca">Marca</label>
+        <select name="marca" id="">
+            {% for vehic_marca in extraccion_lista_vehiculos_marca %}
+            <option value="{{vehic_marca}}">{{vehic_marca}}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div>
+        <label for="modelo">Modelo</label>
+        <select name="modelo" id="">
+            {% for vehic_modelo in extraccion_lista_vehiculos_modelo %}
+            <option value="{{vehic_modelo}}">{{vehic_modelo}}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div>
+        <label for="chasis">Chasis</label>
+        <select name="chasis" id="">
+            {% for vehic_chasis in extraccion_lista_vehiculos_chasis %}
+            <option value="{{vehic_chasis}}">{{vehic_chasis}}</option>
             {% endfor %}
         </select>
     </div>
