@@ -8,36 +8,80 @@
 </head>
 <body>
     <div>
-        <label for="cliente">Cliente</label>
-        <select name="cliente" id="">
+        <label for="plan_pago_cliente_01">Cliente 01</label>
+        <select name="plan_pago_cliente_01" id="">
+            {% for ct_nombre_apellido in extraccion_lista_clientes %}
+            <option value="{{ct_nombre_apellido}}">{{ct_nombre_apellido}}</option>
+            {% endfor %}
+        </select>
+        <a href="{{url_for('main.nuevocliente')}}">Cargar nuevo cliente</a>
+    </div>
+    <div>
+        <label for="plan_pago_cliente_02">Cliente 02</label>
+        <select name="plan_pago_cliente_02" id="">
             {% for ct_nombre_apellido in extraccion_lista_clientes %}
             <option value="{{ct_nombre_apellido}}">{{ct_nombre_apellido}}</option>
             {% endfor %}
         </select>
     </div>
     <div>
-        <label for="marca">Marca</label>
-        <select name="marca" id="">
-            {% for vehic_marca in extraccion_lista_vehiculos_marca %}
-            <option value="{{vehic_marca}}">{{vehic_marca}}</option>
+        <label for="plan_pago_codeudor_01">Codeudor 01</label>
+        <select name="plan_pago_codeudor_01" id="">
+            {% for cd_nombre_apellido in extraccion_lista_codeudor %}
+            <option value="{{cd_nombre_apellido}}">{{cd_nombre_apellido}}</option>
+            {% endfor %}
+        </select>
+        <a href="{{url_for('main.nuevocodeudor')}}">Cargar nuevo codeudor</a>
+    </div>
+    <div>
+        <label for="plan_pago_codeudor_02">Codeudor 02</label>
+        <select name="plan_pago_codeudor_02" id="">
+            {% for cd_nombre_apellido in extraccion_lista_codeudor %}
+            <option value="{{cd_nombre_apellido}}">{{cd_nombre_apellido}}</option>
             {% endfor %}
         </select>
     </div>
     <div>
-        <label for="modelo">Modelo</label>
-        <select name="modelo" id="">
-            {% for vehic_modelo in extraccion_lista_vehiculos_modelo %}
-            <option value="{{vehic_modelo}}">{{vehic_modelo}}</option>
+        <label for="plan_pago_codeudor_03">Codeudor 03</label>
+        <select name="plan_pago_codeudor_03" id="">
+            {% for cd_nombre_apellido in extraccion_lista_codeudor %}
+            <option value="{{cd_nombre_apellido}}">{{cd_nombre_apellido}}</option>
             {% endfor %}
         </select>
     </div>
     <div>
-        <label for="chasis">Chasis</label>
-        <select name="chasis" id="">
-            {% for vehic_chasis in extraccion_lista_vehiculos_chasis %}
-            <option value="{{vehic_chasis}}">{{vehic_chasis}}</option>
+        <label for="plan_pago_entrega">Monto de la entrega en Guaraníes (solo números)</label>
+        <input type="text" name="plan_pago_entrega" id="">
+        </input>
+    </div>
+    <div>
+        <label for="plan_pago_cant_cuotas">Cantidad de cuotas (solo números)</label>
+        <input type="text" name="plan_pago_cant_cuotas" id="">
+        </input>
+    </div>
+    <div>
+        <label for="plan_pago_monto_cuota">Monto de las cuotas (solo números)</label>
+        <input type="text" name="plan_pago_monto_cuota" id="">
+        </input>
+    </div>
+    <div>
+        <label for="plan_pago_cant_refuerzos">Cantidad de refuerzos (solo números)</label>
+        <input type="text" name="plan_pago_cant_refuerzos" id="">
+        </input>
+    </div>
+    <div>
+        <label for="plan_pago_monto_refuerzos">Monto de las cuotas (solo números)</label>
+        <input type="text" name="plan_pago_monto_refuerzos" id="">
+        </input>
+    </div>
+    <div>
+        <label for="vehiculo">Vehiculo</label>
+        <select name="vehiculo" id="">
+            {% for vehiculo in extraccion_lista_vehiculos %}
+            <option value="{{vehiculo}}">{{vehiculo}}</option>
             {% endfor %}
         </select>
+        <a href="{{url_for('main.nuevovehiculo')}}">Cargar nuevo vehiculo</a>
     </div>
 </body>
 </html>

@@ -73,24 +73,19 @@ def nuevaoperacion():
     print(extraccion_lista_clientes)
 
     consulta_vehiculo=Vehiculo.query.all()
-    extraccion_lista_vehiculos_marca=[]
-    extraccion_lista_vehiculos_modelo=[]
-    extraccion_lista_vehiculos_chasis=[]
+    extraccion_lista_vehiculos=[]
+ 
     for elemento in consulta_vehiculo:
-        extraccion_lista_vehiculos_marca.append(elemento.vehic_marca)
-        extraccion_lista_vehiculos_modelo.append(elemento.vehic_modelo)
-        extraccion_lista_vehiculos_chasis.append(elemento.vehic_chasis)
-    print(extraccion_lista_vehiculos_marca)
-    print(extraccion_lista_vehiculos_modelo)
-    print(extraccion_lista_vehiculos_chasis)
+        extraccion_lista_vehiculos.append(elemento.vehic_marca+" / "+elemento.vehic_modelo+" / "+str(elemento.vehic_anho)+" / "+elemento.vehic_tipo+" / "+elemento.vehic_color+" / "+elemento.vehic_combustible+" / "+str(elemento.vehic_kilometraje)+" / "+elemento.vehic_estado)
+    print(extraccion_lista_vehiculos)
 
-    consulta_codeudor=ClienteTitular.query.all()
-    extraccion_lista_clientes=[]
-    for elemento in consulta_cliente_titular:
-        extraccion_lista_clientes.append(elemento.ct_nombre_apellido)
-    print(extraccion_lista_clientes)
+    consulta_codeudor=Codeudor.query.all()
+    extraccion_lista_codeudor=[]
+    for elemento in consulta_codeudor:
+        extraccion_lista_codeudor.append(elemento.cd_nombre_apellido)
+    print(extraccion_lista_codeudor)
 
-    return render_template('nuevaoperacion.html', extraccion_lista_clientes=extraccion_lista_clientes, extraccion_lista_vehiculos_marca=extraccion_lista_vehiculos_marca, extraccion_lista_vehiculos_modelo=extraccion_lista_vehiculos_modelo, extraccion_lista_vehiculos_chasis=extraccion_lista_vehiculos_chasis)
+    return render_template('nuevaoperacion.html', extraccion_lista_clientes=extraccion_lista_clientes, extraccion_lista_vehiculos=extraccion_lista_vehiculos, extraccion_lista_codeudor=extraccion_lista_codeudor)
 
 # Direccionar a la página de consulta
 @bp.route('/consulta')
