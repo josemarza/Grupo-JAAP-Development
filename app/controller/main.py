@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request
 from datetime import datetime
-from app.model import Vehiculo, ClienteTitular, Codeudor
+from app.model import Vehiculo, ClienteTitular, Codeudor, PlanDePago
 from flask_sqlalchemy import SQLAlchemy
 
 bp = Blueprint('main', __name__)
@@ -23,7 +23,6 @@ def nuevovehiculo():
 @bp.route('/api/nuevovehiculo',methods=['POST'])
 def apinuevovehiculo():
     datos_vehiculo=request.form
-    print(datos_vehiculo)
     fecha_actual=datetime.now()
     
     carga_de_vehiculo = Vehiculo.create(
@@ -40,7 +39,6 @@ def nuevocliente():
 @bp.route('/api/nuevocliente',methods=['POST'])
 def apinuevocliente():
     nuevo_cliente=request.form
-    print(nuevo_cliente)
     fecha_actual=datetime.now()
     
     carga_de_nuevo_cliente = ClienteTitular.create(
@@ -56,7 +54,6 @@ def nuevocodeudor():
 @bp.route('/api/nuevocodeudor',methods=['POST'])
 def apinuevocodeudor():
     nuevo_codeudor=request.form
-    print(nuevo_codeudor)
     fecha_actual=datetime.now()
     
     carga_de_nuevo_codeudor = Codeudor.create(
@@ -70,22 +67,34 @@ def nuevaoperacion():
     extraccion_lista_clientes=[]
     for elemento in consulta_cliente_titular:
         extraccion_lista_clientes.append(elemento.ct_nombre_apellido)
-    print(extraccion_lista_clientes)
 
     consulta_vehiculo=Vehiculo.query.all()
     extraccion_lista_vehiculos=[]
- 
     for elemento in consulta_vehiculo:
-        extraccion_lista_vehiculos.append(elemento.vehic_marca+" / "+elemento.vehic_modelo+" / "+str(elemento.vehic_anho)+" / "+elemento.vehic_tipo+" / "+elemento.vehic_color+" / "+elemento.vehic_combustible+" / "+str(elemento.vehic_kilometraje)+" / "+elemento.vehic_estado)
+        extraccion_lista_vehiculos.append([elemento.vehic_id, elemento.vehic_marca, elemento.vehic_modelo, elemento.vehic_anho,elemento.vehic_tipo])
+        
+        # extraccion_lista_vehiculos.append(elemento.vehic_marca+" / "+elemento.vehic_modelo+" / "+str(elemento.vehic_anho)+" / "+elemento.vehic_tipo+" / "+elemento.vehic_color+" / "+elemento.vehic_combustible+" / "+str(elemento.vehic_kilometraje)+" / "+elemento.vehic_estado)
     print(extraccion_lista_vehiculos)
-
     consulta_codeudor=Codeudor.query.all()
     extraccion_lista_codeudor=[]
     for elemento in consulta_codeudor:
         extraccion_lista_codeudor.append(elemento.cd_nombre_apellido)
-    print(extraccion_lista_codeudor)
-
+  
     return render_template('nuevaoperacion.html', extraccion_lista_clientes=extraccion_lista_clientes, extraccion_lista_vehiculos=extraccion_lista_vehiculos, extraccion_lista_codeudor=extraccion_lista_codeudor)
+
+@bp.route('/api/nuevaoperacion',methods=['POST'])
+def apinuevaoperacion():
+    nueva_operacion=request.form
+
+    fecha_actual=datetime.now()
+    
+    carga_de_nueva_operacion = PlanDePago.create(
+    plan_pago_cliente_01=nueva_operacion['plan_pago_cliente_01'], plan_pago_cliente_02=nueva_operacion['plan_pago_cliente_02'], plan_pago_codeudor_01=nueva_operacion['plan_pago_codeudor_01'], plan_pago_codeudor_02=nueva_operacion['plan_pago_codeudor_02'], plan_pago_codeudor_03=nueva_operacion['plan_pago_codeudor_03'], plan_pago_entrega=nueva_operacion['plan_pago_entrega'], plan_pago_cant_cuotas=nueva_operacion['plan_pago_cant_cuotas'], plan_pago_monto_cuota=nueva_operacion['plan_pago_monto_cuota'], plan_pago_cant_refuerzos=nueva_operacion['plan_pago_cant_refuerzos'], plan_pago_monto_refuerzos=nueva_operacion['plan_pago_monto_refuerzos'], plan_pago_id_vehic=nueva_operacion['plan_pago_id_vehic']        
+    )
+        
+    return render_template("nuevocodeudor.html")
+
+    return render_template('nuevaoperacion.html')
 
 # Direccionar a la página de consulta
 @bp.route('/consulta')

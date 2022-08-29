@@ -7,9 +7,11 @@
     <title>Nueva Operación</title>
 </head>
 <body>
+    <form action="/api/nuevaoperacion" method="POST">
     <div>
         <label for="plan_pago_cliente_01">Cliente 01</label>
         <select name="plan_pago_cliente_01" id="">
+            <option value=""></option>
             {% for ct_nombre_apellido in extraccion_lista_clientes %}
             <option value="{{ct_nombre_apellido}}">{{ct_nombre_apellido}}</option>
             {% endfor %}
@@ -19,6 +21,7 @@
     <div>
         <label for="plan_pago_cliente_02">Cliente 02</label>
         <select name="plan_pago_cliente_02" id="">
+            <option value=""></option>
             {% for ct_nombre_apellido in extraccion_lista_clientes %}
             <option value="{{ct_nombre_apellido}}">{{ct_nombre_apellido}}</option>
             {% endfor %}
@@ -27,6 +30,7 @@
     <div>
         <label for="plan_pago_codeudor_01">Codeudor 01</label>
         <select name="plan_pago_codeudor_01" id="">
+            <option value=""></option>
             {% for cd_nombre_apellido in extraccion_lista_codeudor %}
             <option value="{{cd_nombre_apellido}}">{{cd_nombre_apellido}}</option>
             {% endfor %}
@@ -36,6 +40,7 @@
     <div>
         <label for="plan_pago_codeudor_02">Codeudor 02</label>
         <select name="plan_pago_codeudor_02" id="">
+            <option value=""></option>
             {% for cd_nombre_apellido in extraccion_lista_codeudor %}
             <option value="{{cd_nombre_apellido}}">{{cd_nombre_apellido}}</option>
             {% endfor %}
@@ -44,6 +49,7 @@
     <div>
         <label for="plan_pago_codeudor_03">Codeudor 03</label>
         <select name="plan_pago_codeudor_03" id="">
+            <option value=""></option>
             {% for cd_nombre_apellido in extraccion_lista_codeudor %}
             <option value="{{cd_nombre_apellido}}">{{cd_nombre_apellido}}</option>
             {% endfor %}
@@ -75,13 +81,24 @@
         </input>
     </div>
     <div>
-        <label for="vehiculo">Vehiculo</label>
-        <select name="vehiculo" id="">
-            {% for vehiculo in extraccion_lista_vehiculos %}
-            <option value="{{vehiculo}}">{{vehiculo}}</option>
-            {% endfor %}
+
+        <!-- VER LA FORMA DE RECORRER TODA LA LISTA -->
+        <!-- <label for="plan_pago_id_vehiculo">Vehiculo</label>
+        <select name="plan_pago_id_vehiculo" id="">
+            <option value=""></option>
+            {% for vehiculos in extraccion_lista_vehiculos %}
+                {% for vehiculo in range(vehiculos | length) %}
+            <option value="{{vehiculos[vehiculo.vehic_id]}}">{{vehiculos[vehiculo.vehic_marca], '/', vehiculos[vehiculo.vehic_modelo], '/', vehiculos[vehiculo.vehic_anho]}}</option>
+                {% endfor %}
+            {% endfor %} 
+
+             -->
         </select>
         <a href="{{url_for('main.nuevovehiculo')}}">Cargar nuevo vehiculo</a>
     </div>
+    <div>
+        <button type="submit">Guardar Operación</button>
+    </div>
+</form>
 </body>
 </html>
